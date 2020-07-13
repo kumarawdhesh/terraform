@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pythonwebapp-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: pythonwebapp
+    spec:
+      containers:
+      - name: k8s-demo
+        image: amitvashist7/my-python-webapp:1
+        ports:
+        - name: node-port
+          containerPort: 80

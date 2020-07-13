@@ -1,0 +1,22 @@
+
+http_requests_total{job=~".*etheus"}
+
+http_requests_total{job=~".*etheus",method="get"}
+
+http_requests_total{code!~"2.."}
+http_requests_total{code!~"4.."}
+http_requests_total{code~"2.."}
+
+
+rate(http_requests_total[5m])
+sum(rate(http_requests_total[5m])) by (job)
+
+
+(node_memory_MemTotal_bytes - node_memory_MemFree_bytes)
+
+(node_memory_MemTotal_bytes - node_memory_MemFree_bytes) / 1024/1024
+
+topk(3,sum(rate(node_cpu_seconds_total[15m]))) by (job)
+
+
+

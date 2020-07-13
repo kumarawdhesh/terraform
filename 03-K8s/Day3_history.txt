@@ -1,0 +1,168 @@
+    1  ls
+    2  java -version 
+    3  mvn --version 
+    4  exit
+    5  docker version 
+    6  exit
+    7  git clone https://github.com/amitvashisttech/k8s-terraform-cgi-25May2020.git
+    8  ls
+    9  cd k8s-terraform-cgi-25May2020/
+   10  ls
+   11  03-K8s/
+   12  ls
+   13  cd 03-K8s/
+   14  ls
+   15  cd 01-Setup/
+   16  ls
+   17  vim Vagrantfile 
+   18  ls
+   19  ip addr 
+   20  ls
+   21  vim install-kubernetes.sh 
+   22  cd ..
+   23  git add . ; git commit -m "K8s-Install-Update"; git push 
+   24  ls
+   25  cd 03-K8s/
+   26  ls
+   27  cd 01-Setup/
+   28  ls
+   29  ./install-kubernetes.sh 
+   30  cd 
+   31  mkdir -p $HOME/.kube
+   32  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   33  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   34  kubectl get nodes 
+   35  kubectl get nodes -o wide
+   36  ls
+   37  cd k8s-terraform-cgi-25May2020/
+   38  git pull 
+   39  ls
+   40  cd 03-K8s/02-First-App/
+   41  ls
+   42  cat helloworld.yml 
+   43  kubectl get pods 
+   44  kubectl create -f helloworld.yml 
+   45  kubectl get pods 
+   46  kubectl run hello-kube --image=amitvashist7/k8s-tiny-web --port=80
+   47  kubectl get pods 
+   48  kubectl log pod nodehelloworld
+   49  kubectl log pods nodehelloworld
+   50  kubectl logs pods nodehelloworld
+   51  kubectl logs pod nodehelloworld
+   52  kubectl logs pod hello-kube-7594d6bc45-4pffj
+   53  kubectl logs hello-kube-7594d6bc45-4pffj
+   54  kubectl log hello-kube-7594d6bc45-4pffj
+   55  kubectl logs hello-kube-7594d6bc45-4pffj
+   56  kubectl logs 
+   57  kubectl logs -f hello-kube-7594d6bc45-4pffj
+   58  kubectl get pods 
+   59  kubectl get pods -o wide 
+   60  cat ../01-Setup/install-kubernetes.sh | grep -i pod
+   61  ls
+   62  kubectl get pod,deploy 
+   63  kubectl delete pod,deploy --all
+   64  kubectl get pod,deploy 
+   65  cd ..
+   66  ls
+   67  git pull
+   68  ls
+   69  cd 03-Replication-controller/
+   70  ls
+   71  vim helloworld-repl-controller.yml 
+   72  ls
+   73  kubectl create -f helloworld-repl-controller.yml 
+   74  kubectl get rc 
+   75  kubectl get pods 
+   76  kubectl scale --replicas=3 rc helloworld-controller
+   77  kubectl get pods 
+   78  kubectl scale --replicas=10 rc helloworld-controller
+   79  kubectl get rc 
+   80  kubectl get pods 
+   81  cat helloworld-repl-controller.yml 
+   82  kubectl create -f helloworld-repl-controller.yml 
+   83  kubectl apply -f helloworld-repl-controller.yml 
+   84  kubectl get rc 
+   85  kubectl get pods 
+   86  ls
+   87  cd ..
+   88  ls
+   89  cd ..
+   90  ls
+   91  git add . ; git commit -m "RC - Update"; git push 
+   92  history 
+   93  kubectl get rc 
+   94  kubectl describe rc helloworld-controller
+   95  kubectl get pods 
+   96  kubectl scale --replicas=1 rc helloworld-controller
+   97  kubectl get pods 
+   98  kubectl describe rc helloworld-controller
+   99  kubectl get pods 
+  100  kubectl delete pod helloworld-controller-nxnkg
+  101  kubectl get pods 
+  102  kubectl get rc 
+  103  kubectl delete rc helloworld-controller
+  104  ls
+  105  git pull 
+  106  ls
+  107  cd 03-K8s/
+  108  ls
+  109  git pull
+  110  ls
+  111  cd 04-Deployment/
+  112  ls
+  113  cat helloworld.yml 
+  114  kubectl create -f helloworld.yml 
+  115  kubectl get deployment
+  116  kubectl get pod 
+  117  kubectl get rs 
+  118  kubectl get deployment,rs,pods
+  119  kubectl get deployment 
+  120  kubectl get replicaset
+  121  kubectl get pods 
+  122  kubectl describe deployment helloworld-deployment
+  123  kubectl get pods 
+  124  kubectl scale --replicas=3 deployemnt helloworld-deployment
+  125  kubectl scale --replicas=3 deployment helloworld-deployment
+  126  kubectl get pods 
+  127  kubectl delete pod helloworld-deployment-759fc84489-94f2t helloworld-deployment-759fc84489-ltldf
+  128  kubectl get pods 
+  129  ls
+  130  kubectl get deploy 
+  131  kubectl expose deploy helloworld-deployment --type=NodePort
+  132  kubectl get svc 
+  133  kubectl get pods -o wide 
+  134  ip addr 
+  135  kubectl get svc 
+  136  kubectl get pods -o wide 
+  137* curl 1:31702
+  138  curl 172.31.0.102:31702
+  139  cat /etc/hosts
+  140  kubectl get pods -o wide 
+  141  curl worker1:31702
+  142  curl worker2:31702
+  143  history 
+  144  kubectl scale --replicas=10 deployment helloworld-deployment
+  145  kubectl get pods 
+  146  kubectl describe deployment helloworld-deployment
+  147  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:2
+  148  kubectl rollout status  deployment helloworld-deployment
+  149  kubectl get pods 
+  150  curl worker1:31702
+  151  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:3
+  152  kubectl rollout status  deployment helloworld-deployment
+  153  kubectl rollout history  deployment helloworld-deployment
+  154  kubectl rollout history  deployment helloworld-deployment --revsion=2
+  155  kubectl rollout history  deployment helloworld-deployment --revision=2
+  156  kubectl rollout history  deployment helloworld-deployment --revision=1
+  157  kubectl rollout history  deployment helloworld-deployment --revision=2
+  158  kubectl rollout history  deployment helloworld-deployment --revision=3
+  159  kubectl set image deployment helloworld-deployment k8s-demo=amitvashist7/k8s-tiny-web:4 --record
+  160  kubectl rollout history  deployment helloworld-deployment 
+  161  curl worker1:31702
+  162  kubectl scale --replicas=1 deployment helloworld-deployment
+  163  ls
+  164  cd ..
+  165  ls
+  166  mv README-Dev.md 04-Deployment/README.md
+  167  ls
+  168  history > Day3_history.txt
