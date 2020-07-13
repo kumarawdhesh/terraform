@@ -1,0 +1,5 @@
+---
+- hosts: web:db
+  name: My Web Server Installation
+  roles:
+  - role: "../roles/apache" 

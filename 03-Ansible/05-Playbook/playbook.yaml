@@ -1,0 +1,19 @@
+---
+
+- hosts: web:db
+  name: My Web Server Installation
+  tasks: 
+  - name: Install Apache Packages
+    apt: name=apache2 state=present 
+
+  - name: Start Apache Service 
+    service: name=apache2 state=started
+
+
+
+- hosts: db
+  name:  Repo Server.
+  tasks: 
+  - name: Install Git Packages
+    apt: name=git state=present 
+

@@ -1,0 +1,7 @@
+---
+- hosts: "172.42.42.101"
+  name: My Petclinic Installation
+  roles:
+   - role: "../roles/server-common"
+   - role: "../roles/apache"
+   - role: "../roles/tomcat"

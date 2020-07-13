@@ -1,0 +1,24 @@
+
+[web]
+172.42.42.101   ansible_ssh_user=amit ansible_ssh_pass=12345
+172.42.42.10[3:5]
+
+
+[db]
+172.42.42.102
+172.42.42.10[4:9]
+
+
+[ansible]
+172.42.42.100
+172.42.42.104
+
+
+[dc:children]
+web
+db
+
+[dc:vars]
+ansible_ssh_user=vagrant
+ansible_ssh_pass=vagrant
+

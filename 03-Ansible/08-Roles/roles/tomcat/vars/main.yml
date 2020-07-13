@@ -1,0 +1,7 @@
+---
+# vars file for tomcat
+
+doc_tomcat: "/opt/SP/apps/tomcat"
+doc_myapp: "/opt/SP/apps/tomcat/webapps/myapp"
+doc_test: "/opt/SP/apps/amitvashist"
+admin: "Test-Admin-4"

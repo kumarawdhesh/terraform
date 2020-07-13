@@ -1,0 +1,161 @@
+    1  docker-compose scale mywebap p=1
+    2  docker-compose scale mywebapp=1
+    3  docker-compose ps 
+    4  vim docker-compose.yaml 
+    5  docker-compose up -d --build 
+    6  docker-compose  ps 
+    7  curl localhost:38082
+    8  ls
+    9  docker-compose scale mywebapp=5
+   10  docker-compose  ps 
+   11  vim docker-compose.yaml 
+   12  docker-compose scale mywebapp=5
+   13  docker-compose  ps 
+   14  docker-compose scale mywebapp=1
+   15  ls
+   16  cd ..
+   17  ls
+   18  cd petclinic/
+   19  ls
+   20  docker-compose stop 
+   21  docker-compose rm 
+   22  ls
+   23  cd ..
+   24  ls
+   25  cd python-webapp/
+   26  ls
+   27  docker-compose stop 
+   28  docker-compose rm
+   29  ls
+   30  cd ..
+   31  ls
+   32  > petclinic/target/petclinic.war
+   33  ls
+   34  cd ..
+   35  ls
+   36  cd ..
+   37  ls
+   38  git branch 
+   39  ls
+   40  git config --list 
+   41  ls
+   42  cd ..
+   43  ls
+   44  mkdir newcode 
+   45  cd newcode/
+   46  git clone https://github.com/amitvashisttech/devops-cgi-11May2020.git
+   47  ls
+   48  cd devops-cgi-11May2020/
+   49  ls
+   50  git branch 
+   51  git branch -r 
+   52  git checkout -b development origin/development
+   53  ls
+   54  cd 01-Jenkins/
+   55  ls
+   56  cd petclinic-code/ls
+   57  cd petclinic-code/
+   58  ls
+   59  cp -rf /root/devops-cgi-11May2020/02-Docker/DockerCompose/petclinic/docker-compose.yaml . 
+   60  cp -rf /root/devops-cgi-11May2020/02-Docker/DockerCompose/petclinic/Dockerfile . 
+   61  ls
+   62  cat docker-compose.yaml 
+   63  cat Dockerfile 
+   64  ls
+   65  cd ..
+   66  ls
+   67  cd 
+   68  ls
+   69  cd devops-cgi-11May2020/
+   70  ls
+   71  
+   72  git add . ; git commit -m "docker-compose"; git push 
+   73  ls
+   74  git branch 
+   75  git checkout jenkins-job
+   76  ls
+   77  cd development/
+   78  ls
+   79  cat Jenkinfile 
+   80  ls
+   81  mv Basic 01-Basic
+   82  ls
+   83  mv JUnit-Code-Coverage 02-JUnit-Code-Coverage
+   84  ls
+   85  mv Any-Agent-Job 03-Any-Agent-Job
+   86  ls
+   87  mv Node-Label-Job 04-Node-Label-Job 
+   88  ls
+   89  cp -rf Jenkinfile 05-Archiva
+   90  ls
+   91  ls -ltr 
+   92  vim Jenkinfile 
+   93  ls
+   94  cd ..
+   95  sl
+   96  ls
+   97  git add . ; git commit -m "Jenkins-Compose"; git push 
+   98  ls
+   99  cd 
+  100  ls
+  101  cd newcode/devops-cgi-11May2020/
+  102  ls
+  103  git status 
+  104  git add . ; git commit -m "Dockerfile & Compose"; git push 
+  105  ls
+  106  docker ps 
+  107  docker ps -aq
+  108  docker kill $(docker ps -aq)
+  109  docker rm $(docker ps -aq)
+  110  docker ps -a 
+  111  cd 
+  112  ks
+  113  ls
+  114  java -jar jenkins.war  --httpPort=9090 & 
+  115  netstat -tuln
+  116  docker ps 
+  117  ls
+  118  git branch 
+  119  ls
+  120  cd devops-cgi-11May2020/
+  121  ls
+  122  git branch 
+  123  ls
+  124  cd 
+  125  ls
+  126  docker run --restart unless-stopped --name mailserver -p 1025:1025 -p 8025:8025 -d mailhog/mailhog
+  127  docker ps 
+  128  ls
+  129  cd devops-cgi-11May2020/
+  130  ls
+  131  git branch 
+  132  cd development/
+  133  ls
+  134  cp -rf Jenkinfile 06-Jenkins-Docker-Compose
+  135  ls
+  136  vim Jenkinfile 
+  137  cd ..
+  138  ls
+  139  git add . ; git commit -m "Jenkinfile-Email"; git push 
+  140  ls
+  141  cd 
+  142  ls
+  143  cd newcode/
+  144  ls
+  145  cd devops-cgi-11May2020/
+  146  ls
+  147  git branch 
+  148  echo "Email-Check" > CHANGE_ME.txt 
+  149  git add . ; git commit -m "Email"; git push 
+  150  ls
+  151  cd 
+  152  ls
+  153  history 
+  154  l
+  155  cd devops-cgi-11May2020/
+  156  ls
+  157  git checkout master 
+  158  ls
+  159  cd 02-Docker/
+  160  ls
+  161  history > Day3_History-2.txt

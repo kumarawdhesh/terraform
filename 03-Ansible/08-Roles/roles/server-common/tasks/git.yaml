@@ -1,0 +1,4 @@
+---
+
+- name: Install Git Client Packages 
+  apt: name=git state=present

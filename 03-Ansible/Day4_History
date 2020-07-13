@@ -1,0 +1,1000 @@
+  361  ls
+  362  docker ps 
+  363  docker attach mytest-cont-1
+  364  ls
+  365  curl localhost 
+  366  curl 172.17.0.5
+  367  ls
+  368  ip addr 
+  369  ls
+  370  docker attach mytest-cont-1
+  371  curl localhost
+  372  curl 172.17.0.5
+  373  ls
+  374  docker attach mytest-cont-1
+  375  ls
+  376  docker ps 
+  377  docker commit -p -m "MyTestHTTPD" mytest-cont-1 centos-8-httpd:v1
+  378  docker images 
+  379  docker run -it --name httpd-1 centos-8-httpd:v1
+  380  docker ps 
+  381  docker attach mytest-cont-4
+  382  docker ps 
+  383  docker run -it --name httpd-2 centos-8-httpd:v1
+  384  curl 172.17.0.6
+  385  ls
+  386  docker inspect httpd-1
+  387  curl 172.17.0.8
+  388  curl 172.17.0.6
+  389  curl 172.17.0.8
+  390  curl 172.17.0.6
+  391  curl 172.17.0.8
+  392  docker attach httpd-2 
+  393  docker commit -p -m "MyTestHTTPD" httpd-2 centos-8-httpd:v2
+  394  docker ps 
+  395  docker ps -a
+  396  docker ps -aq
+  397  docker kill $(docker ps -aq)
+  398  docker rm $(docker ps -aq)
+  399  docker ps -a 
+  400  docker images 
+  401  docker run -it --name httpd-1 centos-8-httpd:v1
+  402  docker run -it --name httpd-2 centos-8-httpd:v2
+  403  docker inspect httpd-1
+  404  curl 172.17.0.2
+  405  docker inspect httpd-2
+  406  curl 172.17.0.3
+  407  docker run -it --name httpd-3 centos-8-httpd:v2
+  408  curl 172.17.0.4
+  409  docker run -itd --name httpd-4 centos-8-httpd:v2
+  410  docker run -itd --name httpd-5 centos-8-httpd:v2
+  411  docker ps 
+  412  docker inspect httpd-5
+  413  curl 172.17.0.6
+  414  curl 172.17.0.5
+  415  curl 172.17.0.4
+  416  curl 172.17.0.3
+  417  curl 172.17.0.2
+  418  docker ps 
+  419  ls
+  420  cd devops-cgi-11May2020/
+  421  ls
+  422  cd 02-Docker/
+  423  ls
+  424  history | grep -i docker
+  425  history | grep -i docker > Day2_History 
+  426  ls
+  427  cd ..
+  428  ls
+  429  git add . ; git commit -m "Day-2-History"; git push 
+  430  docker kill $(docker ps -aq)
+  431  docker rm $(docker ps -aq)
+  432  docker images 
+  433  exit
+  434  ls
+  435  ip addr 
+  436  curl 172.17.0.9
+  437  ls
+  438  netstat -tulnp 
+  439  ls
+  440  docker images 
+  441  docker ps 
+  442  docker kill $(docker ps -aq)
+  443  docker rm  $(docker ps -aq)
+  444  docker ps -a 
+  445  docker images 
+  446  docker run -d --name test-cont-1 ubuntu-16-apache:v2
+  447  curl 172.17.0.2
+  448  docker run -d --name test-cont-2 -p 8080:80 ubuntu-16-apache:v2
+  449  docker ps 
+  450  netstat -tulnp 
+  451  docker images 
+  452  docker run -itd --name test-cont-3 -p 8080:80 centos-8-httpd:v3
+  453  docker run -itd --name test-cont-4 -p 8081:80 centos-8-httpd:v3
+  454  docker ps 
+  455  history 
+  456  ls
+  457  cd 02-Docker/
+  458  ls
+  459  cd Dockerfiles/
+  460  ls
+  461  mkdir python-webapp
+  462  ls
+  463  cd python-webapp/
+  464  ls
+  465  cp -rf ../../../../old/test/05-WebPort/* . 
+  466  ls
+  467  vim app.py 
+  468  ls
+  469  mkdir mywebapp
+  470  ls
+  471  mv app.py req.txt mywebapp/
+  472  ls
+  473  vim Dockerfile
+  474  docker build -t mywebapp:v1 . 
+  475  ls
+  476  vim Dockerfile 
+  477  docker build -t mywebapp:v1 . 
+  478  ls
+  479  docker images 
+  480  docker run -d -P mywebapp:v1
+  481  docker ps 
+  482  vim Dockerfile 
+  483  docker run -d -P mywebapp:v1
+  484  docker build -t mywebapp:v1 . 
+  485  docker run -d -P mywebapp:v1
+  486  docker ps 
+  487  docker images 
+  488  docker inspect mywebapp
+  489  docker inspect mywebapp:v1
+  490  ls
+  491  docker run -d -p 8085:80 mywebapp:v1
+  492  docker ps 
+  493  ls
+  494  cp -rf mywebapp/* . 
+  495  ls
+  496  rm -rf mywebapp/
+  497  ls
+  498  vim Dockerfile 
+  499  docker build -t mywebapp:v2 . 
+  500  vim app.py 
+  501  docker build -t mywebapp:v2 . 
+  502  docker images 
+  503  docker run -d -p 8085:80 mywebapp:v2
+  504  docker ps 
+  505  ls
+  506  mkdir code
+  507  ls
+  508  cp rf app.py req.txt code/
+  509  mv  app.py req.txt code/
+  510  ls
+  511  vim Dockerfile 
+  512  docker build -t mywebapp:v3 . 
+  513  docker run -d -p 8086:80 mywebapp:v3
+  514  docker ps 
+  515  docker run -d -P mywebapp:v3
+  516  docker ps 
+  517  ls
+  518  cd ..
+  519  ls
+  520  cd ..
+  521  ls
+  522  docker kill $(docker ps -aq)
+  523  ls
+  524  docker images 
+  525  docker images | grep -i mywebapp
+  526  docker images | grep -i mywebapp | awk -F" " '{print $1}'
+  527  docker images | grep -i mywebapp | awk -F" " '{print $3}'
+  528  docker rmi $(docker images | grep -i mywebapp | awk -F" " '{print $3}')
+  529  docker rmi $(docker images | grep -i mywebapp | awk -F" " '{print $3}') --force 
+  530  ls
+  531  cd Dockerfiles/
+  532  ls
+  533  cd apache/
+  534  ls
+  535  cd ..
+  536  ls
+  537  cd python-webapp/
+  538  ls
+  539  vim Dockerfile 
+  540  vim code/app.py 
+  541  ls
+  542  docker build -t mywebapp:v1 . 
+  543  ls
+  544  cd ..
+  545  ls
+  546  cd apache/
+  547  ls
+  548  docker images 
+  549  netstat -tulnp 
+  550  docker inspect a47070435fdd
+  551  docker images 
+  552  docker run -d -p 8086:80 mywebapp:v1
+  553  docker ps 
+  554  curl localhost:8086 
+  555  ls
+  556  vim Dockerfile
+  557  ls
+  558  cd ../
+  559  ls
+  560  cd python-webapp/
+  561  ls
+  562  cd code/
+  563  ls
+  564  cat app.py 
+  565  ls
+  566  cd ..
+  567  ls
+  568  vim Dockerfile 
+  569  docker build -t mywebapp:v2 . 
+  570  docker images 
+  571  docker inspect mywebapp:v2
+  572  ls
+  573  docker run -d -p 8087:5000 mywebapp:v2
+  574  curl localhost:8087
+  575  vim Dockerfile 
+  576  docker build -t mywebapp:v3 . 
+  577  docker run -d -p 8088:5001 mywebapp:v2
+  578  docker run -d -p 8089:5001 mywebapp:v3
+  579  docker ps 
+  580  curl localhost:8086
+  581  curl localhost:8087
+  582  curl localhost:8088
+  583  curl localhost:8089
+  584  docker run -d -P mywebapp:v3
+  585  docker ps 
+  586  ls
+  587  docker images 
+  588  docker run -d -P ubuntu-16-apache:v2
+  589  docker ps 
+  590  cd ..
+  591  ls
+  592  cd apache/
+  593  ls
+  594  vim Dockerfile
+  595  docker build -t ubuntu-16-apache:v3 -f Dockerfile
+  596  docker build -t ubuntu-16-apache:v3 -f Dockerfile .
+  597  docker run -d -P ubuntu-16-apache:v3
+  598  docker ps 
+  599  vim Dockerfile
+  600  docker build -t ubuntu-16-apache:v4 -f Dockerfile
+  601  docker build -t ubuntu-16-apache:v4 -f Dockerfile .
+  602  docker run -d -P ubuntu-16-apache:v4
+  603  docker ps 
+  604  ls
+  605  cd ..
+  606  ls
+  607  cd python-webapp/
+  608  ls
+  609  vim Dockerfile 
+  610  ls
+  611  cd code/
+  612  ls
+  613  cat req.txt 
+  614  vim app.py 
+  615  ls
+  616  cd 
+  617  ls
+  618  docker ps 
+  619  ls
+  620  cd devops-cgi-11May2020/
+  621  ls
+  622  history 
+  623  history >> 02-Docker/Day3_History 
+  624  git add . ; git commit -m "Python-App"; git push 
+  625  ls
+  626  cd 02-Docker/
+  627  ls
+  628  cd Dockerfiles/
+  629  ls
+  630  mkdir petclinic
+  631  ls
+  632  cd petclinic/
+  633  ls
+  634  vim Dockerfile
+  635  ls
+  636  mkdir target
+  637  cp -rf /root/.jenkins/workspace/Petclinic-Project-Pipeline-as-a-code-scm/01-Jenkins/petclinic-code/target/petclinic.war target/
+  638  ls
+  639  ls -ltr target/
+  640  lls
+  641  ls
+  642  docker build -t mytomcatpetclinic-app:v1  .
+  643  cd /var/lib/docker/
+  644  ls
+  645  exit
+  646  docker-compose scale mywebap p=1
+  647  docker-compose scale mywebapp=1
+  648  docker-compose ps 
+  649  vim docker-compose.yaml 
+  650  docker-compose up -d --build 
+  651  docker-compose  ps 
+  652  curl localhost:38082
+  653  ls
+  654  docker-compose scale mywebapp=5
+  655  docker-compose  ps 
+  656  vim docker-compose.yaml 
+  657  docker-compose scale mywebapp=5
+  658  docker-compose  ps 
+  659  docker-compose scale mywebapp=1
+  660  ls
+  661  cd ..
+  662  ls
+  663  cd petclinic/
+  664  ls
+  665  docker-compose stop 
+  666  docker-compose rm 
+  667  ls
+  668  cd ..
+  669  ls
+  670  cd python-webapp/
+  671  ls
+  672  docker-compose stop 
+  673  docker-compose rm
+  674  ls
+  675  cd ..
+  676  ls
+  677  > petclinic/target/petclinic.war
+  678  ls
+  679  cd ..
+  680  ls
+  681  cd ..
+  682  ls
+  683  git branch 
+  684  ls
+  685  git config --list 
+  686  ls
+  687  cd ..
+  688  ls
+  689  mkdir newcode 
+  690  cd newcode/
+  691  git clone https://github.com/amitvashisttech/devops-cgi-11May2020.git
+  692  ls
+  693  cd devops-cgi-11May2020/
+  694  ls
+  695  git branch 
+  696  git branch -r 
+  697  git checkout -b development origin/development
+  698  ls
+  699  cd 01-Jenkins/
+  700  ls
+  701  cd petclinic-code/ls
+  702  cd petclinic-code/
+  703  ls
+  704  cp -rf /root/devops-cgi-11May2020/02-Docker/DockerCompose/petclinic/docker-compose.yaml . 
+  705  cp -rf /root/devops-cgi-11May2020/02-Docker/DockerCompose/petclinic/Dockerfile . 
+  706  ls
+  707  cat docker-compose.yaml 
+  708  cat Dockerfile 
+  709  ls
+  710  cd ..
+  711  ls
+  712  cd 
+  713  ls
+  714  cd devops-cgi-11May2020/
+  715  ls
+  716  git add . ; git commit -m "docker-compose"; git push 
+  717  ls
+  718  git branch 
+  719  git checkout jenkins-job
+  720  ls
+  721  cd development/
+  722  ls
+  723  cat Jenkinfile 
+  724  ls
+  725  mv Basic 01-Basic
+  726  ls
+  727  mv JUnit-Code-Coverage 02-JUnit-Code-Coverage
+  728  ls
+  729  mv Any-Agent-Job 03-Any-Agent-Job
+  730  ls
+  731  mv Node-Label-Job 04-Node-Label-Job 
+  732  ls
+  733  cp -rf Jenkinfile 05-Archiva
+  734  ls
+  735  ls -ltr 
+  736  vim Jenkinfile 
+  737  ls
+  738  cd ..
+  739  sl
+  740  ls
+  741  git add . ; git commit -m "Jenkins-Compose"; git push 
+  742  ls
+  743  cd 
+  744  ls
+  745  cd newcode/devops-cgi-11May2020/
+  746  ls
+  747  git status 
+  748  git add . ; git commit -m "Dockerfile & Compose"; git push 
+  749  ls
+  750  docker ps 
+  751  docker ps -aq
+  752  docker kill $(docker ps -aq)
+  753  docker rm $(docker ps -aq)
+  754  docker ps -a 
+  755  cd 
+  756  ks
+  757  ls
+  758  java -jar jenkins.war  --httpPort=9090 & 
+  759  netstat -tuln
+  760  docker ps 
+  761  ls
+  762  git branch 
+  763  ls
+  764  cd devops-cgi-11May2020/
+  765  ls
+  766  git branch 
+  767  ls
+  768  cd 
+  769  ls
+  770  docker run --restart unless-stopped --name mailserver -p 1025:1025 -p 8025:8025 -d mailhog/mailhog
+  771  docker ps 
+  772  ls
+  773  cd devops-cgi-11May2020/
+  774  ls
+  775  git branch 
+  776  cd development/
+  777  ls
+  778  cp -rf Jenkinfile 06-Jenkins-Docker-Compose
+  779  ls
+  780  vim Jenkinfile 
+  781  cd ..
+  782  ls
+  783  git add . ; git commit -m "Jenkinfile-Email"; git push 
+  784  ls
+  785  cd 
+  786  ls
+  787  cd newcode/
+  788  ls
+  789  cd devops-cgi-11May2020/
+  790  ls
+  791  git branch 
+  792  echo "Email-Check" > CHANGE_ME.txt 
+  793  git add . ; git commit -m "Email"; git push 
+  794  ls
+  795  cd 
+  796  ls
+  797  history 
+  798  l
+  799  cd devops-cgi-11May2020/
+  800  ls
+  801  git checkout master 
+  802  ls
+  803  cd 02-Docker/
+  804  ls
+  805  history > Day3_History-2.txt
+  806  cd ..
+  807  ls
+  808  git add . ; git commit -m "Day3_History-2"; git push 
+  809  history | grep -i mailhog
+  810  ls
+  811  cd /root/.jenkins/
+  812  ls
+  813  cd jobs/Petclinic-pipeline-style-job/
+  814  ls
+  815  cat config.xml 
+  816  ls
+  817  cd ..
+  818  ls
+  819  cd 
+  820  ls
+  821  docker images 
+  822  docker run -itd centos-8-httpd:v3 
+  823  docker ps -ql 
+  824  docker inspect $(docker ps -ql )
+  825  curl 172.17.0.3
+  826  curl 172.17.0.3/info.html
+  827  docker attach $(docker ps -ql )
+  828  curl 172.17.0.3/info.html
+  829  int 0 
+  830  init 0 
+  831  ls
+  832  cd old/
+  833  ls
+  834  cd test/
+  835  ls
+  836  curl localhost:5000
+  837  curl localhost:5000/amit
+  838  ls
+  839  cp -rf 02-Path-Based
+  840  mkdir 02-Path-Based
+  841  ls
+  842  cp -rf app.py req.txt  02-Path-Based/
+  843  cd 02-Path-Based/
+  844  ls
+  845  cd ..
+  846  ls
+  847  vim app.py 
+  848  python app.py 
+  849  vim app.py 
+  850  python app.py 
+  851  vim app.py 
+  852  python app.py 
+  853  curl localhost:5000/amit
+  854  curl localhost:5000/
+  855  curl localhost:5000/info
+  856  l
+  857  mkdir 03-Hostname
+  858  ls
+  859  cp -rf app.py req.txt 03-Hostname/
+  860  ls
+  861  cp -rf 03-Hostname 04-WebPort
+  862  ls
+  863  vim app.py 
+  864  curl localhost:5000/info
+  865  curl localhost:8081/info
+  866  ls
+  867  cp -rf 03-Hostname 04-FQDN
+  868  ls
+  869  vim 04-FQDN/
+  870  vim 04-FQDN/app.py 
+  871  curl localhost:5000/info
+  872  ls
+  873  cp -rf 04-FQDN 05-WebPort
+  874  ls
+  875  cat 04-WebPort/app.py 
+  876  cat 05-WebPort/app.py 
+  877  vi  05-WebPort/app.py 
+  878  ls
+  879  cd devops-cgi-11May2020/
+  880  ls
+  881  cd 03-Ansible/
+  882  ls
+  883  rm -rf 00-Setup/.install.sh.swp 
+  884  vim 00-Setup/install.sh 
+  885  ls
+  886  mkdir 01-Inventory
+  887  ls
+  888  cd 01-Inventory/
+  889  ls
+  890  vim inventory
+  891  ls
+  892  docker ps 
+  893  ls
+  894  cat inventory 
+  895  ansible 172.42.42.100 -i inventory -m ping -u vagrant -k 
+  896  ssh vagrant@172.42.42.100
+  897  ansible 172.42.42.100 -i inventory -m ping -u vagrant -k 
+  898  ansible all -i inventory -m ping -u vagrant -k 
+  899  ssh vagrant@172.42.42.101
+  900  ssh vagrant@172.42.42.102
+  901  ls
+  902  ansible all -i inventory -m ping -u vagrant -k 
+  903  ls
+  904  cd ..
+  905  ls
+  906  cd ..
+  907  ls
+  908  cd 03-Ansible/
+  909  ls
+  910  history > Day2_History
+  911  cd ..
+  912  ls
+  913  git add . ; git commit -m "03-Ansible"; git push 
+  914  ls
+  915  cd 03-Ansible/
+  916  ls
+  917  cd 01-Inventory/
+  918  ls
+  919  cat 
+  920  cat inventory 
+  921  ls
+  922  vim inventory 
+  923  ansible all -i inventory -m ping -u vagrant -k 
+  924  ansible web -i inventory -m ping -u vagrant -k 
+  925  ansible db -i inventory -m ping -u vagrant -k 
+  926  ansible ansible -i inventory -m ping -u vagrant -k 
+  927  ls
+  928  ansible web:db -i inventory -m ping -u vagrant -k 
+  929  ansible 'web:&db' -i inventory -m ping -u vagrant -k 
+  930  ls
+  931  vim inventory 
+  932  ansible web -i inventory -m ping -u vagrant -k 
+  933  ansible db -i inventory -m ping -u vagrant -k 
+  934  ansible web:db -i inventory -m ping -u vagrant -k 
+  935  ansible 'web:&db' -i inventory -m ping -u vagrant -k 
+  936  vi inventory 
+  937  ansible 'web:&db' -i inventory -m ping -u vagrant -k 
+  938  ls
+  939  vim inventory 
+  940  ansible 'web:&db' -i inventory -m ping -u vagrant -k 
+  941  ansible 'web:&db:!ansible' -i inventory -m ping -u vagrant -k 
+  942  ls
+  943  vim inventory 
+  944  ansible dc -i inventory -m ping -u vagrant -k 
+  945  ls
+  946  vim inventory 
+  947  ansible dc -i inventory -m ping -u vagrant -k 
+  948  ansible dc -i inventory -m ping
+  949  ls
+  950  vim inventory 
+  951  ansible dc -i inventory -m ping
+  952  ls
+  953  cp -rf inventory inventory-old
+  954  ls
+  955  vim inventory
+  956  ansible dc -i inventory -m ping
+  957  vim inventory
+  958  ls
+  959  vim inventory
+  960  ansible dc -i inventory -m ping
+  961  ls
+  962  cd ..
+  963  ls
+  964  cp -rf 01-Inventory 02-Modules
+  965  ls
+  966  cd 02-Modules/
+  967  ls
+  968  cd ..
+  969  ls
+  970  cd 02-Modules/
+  971  ls
+  972  rm -rf inventory-old 
+  973  ls
+  974  ansible-doc -l 
+  975  ansible-doc ping 
+  976  date
+  977  ansible-doc command 
+  978  date
+  979  history 
+  980  ls
+  981  vim module-info.txt
+  982  ls
+  983  ansible dc -i inventory -m ping
+  984  ansible dc -i inventory -m command -a 'date'
+  985  df -hTP
+  986  ansible dc -i inventory -m command -a 'df -hTP'
+  987  uname  -a 
+  988  ansible dc -i inventory -m command -a 'uname -a '
+  989  cat /etc/*-release 
+  990  ls
+  991  ansible dc -i inventory -m command -a 'cat /etc/*-release'
+  992  ansible dc -i inventory -m shell -a 'cat /etc/os-re
+  993  ansible dc -i inventory -m command -a 'cat /etc/os-release'
+  994  ansible-doc setup 
+  995  ansible web -i inventory -m setup --tree ./facts
+  996  ls
+  997  cd facts/
+  998  ls
+  999  cat 172.42.42.101 
+ 1000  ansible-doc setup 
+ 1001  lsans
+ 1002  ls
+ 1003  cd 
+ 1004  exit
+ 1005  ls
+ 1006  cd devops-cgi-11May2020/03-Ansible/02-Modules/
+ 1007  ls
+ 1008  ansible web -i inventory -m setup -a 'filter=ansible_all_ipv4_addresses'
+ 1009  ls
+ 1010  cd ..
+ 1011  ls
+ 1012  history > Day2_History 
+ 1013  mv Day2_History Day4_History 
+ 1014  cd ..
+ 1015  ls
+ 1016  git add . ; git commit -m "03-Ansible-modules"; git push 
+ 1017  ls
+ 1018  cd 03-Ansible/ls
+ 1019  cd 03-Ansible/
+ 1020  ls
+ 1021  cp -rf 02-Modules 03-Ansible
+ 1022  ls
+ 1023  mv 03-Ansible 03-Ansible-Config
+ 1024  ls
+ 1025  cd /etc/ansible/
+ 1026  ls
+ 1027  cat hosts 
+ 1028  ls
+ 1029  cd 
+ 1030  ls
+ 1031  cd devops-cgi-11May2020/
+ 1032  ls
+ 1033  cd 03-Ansible/
+ 1034  ls
+ 1035  cd 03-Ansible-Config/
+ 1036  ls
+ 1037  rm -rf facts module-info.txt 
+ 1038  ls
+ 1039  cat /etc/ansible/ansible.cfg 
+ 1040  ls
+ 1041  vim ansible.conf
+ 1042  ls
+ 1043  mv inventory hosts
+ 1044  ls
+ 1045  ansible web -m ping
+ 1046  cat hosts 
+ 1047  ls
+ 1048  mv ansible.conf ansible.cfg
+ 1049  ls
+ 1050  ansible web -m ping
+ 1051  cat ansible.cfg 
+ 1052  cat /etc/ansible/ansible.cfg | grep -i defaults
+ 1053  vim /etc/ansible/ansible.cfg 
+ 1054  ls
+ 1055  ansible web -m ping
+ 1056  ansible dc -m ping
+ 1057  cat /root/.ssh/known_hosts 
+ 1058  > /root/.ssh/known_hosts 
+ 1059  cat /root/.ssh/known_hosts 
+ 1060  ansible dc -m ping
+ 1061  cat /root/.ssh/known_hosts 
+ 1062  source /root/.bashrc 
+ 1063  ansible dc -m ping
+ 1064  exit
+ 1065  ls
+ 1066  cd devops-cgi-11May2020/03-Ansible/03-Ansible-Config/
+ 1067  ls
+ 1068  ansible dc -m ping
+ 1069  grep -i checking /etc/ansible/ansible.cfg 
+ 1070  ls
+ 1071  vim ansible.cfg 
+ 1072  ansible dc -m ping
+ 1073  cat /root/.ssh/known_hosts 
+ 1074  > /root/.ssh/known_hosts 
+ 1075  vim ansible.cfg 
+ 1076  ansible dc -m ping
+ 1077  cat /root/.ssh/known_hosts 
+ 1078  vim ansible.cfg 
+ 1079  cat /root/.ssh/known_hosts 
+ 1080  ansible dc -m ping
+ 1081  cat /root/.ssh/known_hosts 
+ 1082  > /root/.ssh/known_hosts 
+ 1083  cat /root/.ssh/known_hosts 
+ 1084  ansible dc -m ping
+ 1085  cat /root/.ssh/known_hosts 
+ 1086  ansible dc -m ping --flush-cache
+ 1087  ansible dc -m ping --help 
+ 1088  > /root/.ssh/known_hosts 
+ 1089  ssh vagrant@172.42.42.101
+ 1090  ls
+ 1091  cat /root/.ssh/known_hosts 
+ 1092  ssh vagrant@172.42.42.101
+ 1093  ls
+ 1094  > /root/.ssh/known_hosts 
+ 1095  ls
+ 1096  vim ansible.cfg 
+ 1097  cat hosts 
+ 1098  ls
+ 1099  ansible web -m ping 
+ 1100  ansible web -m ping -vvv
+ 1101  cat /root/.ssh/known_hosts 
+ 1102  ansible web -m ping 
+ 1103  vim ansible.cfg 
+ 1104  ansible web -m ping 
+ 1105  cat /root/.ssh/known_hosts 
+ 1106  vim ansible.cfg 
+ 1107  ansible web -m ping 
+ 1108  ansible dc -m ping 
+ 1109  cat /root/.ssh/known_hosts 
+ 1110  vim ansible.cfg 
+ 1111  ansible dc -m ping 
+ 1112  cat /root/.ssh/known_hosts 
+ 1113  ls
+ 1114  cd 
+ 1115  ls
+ 1116  > .ssh/known_hosts 
+ 1117  ls
+ 1118  ssh vagrant@172.42.42.101
+ 1119  ssh vagrant@172.42.42.102
+ 1120  ls
+ 1121  ssh-keygen 
+ 1122  ssh-copy-id vagrant@172.42.42.102
+ 1123  ssh vagrant@172.42.42.102
+ 1124  ls
+ 1125  cd devops-cgi-11May2020/
+ 1126  ls
+ 1127  cd 03-Ansible/
+ 1128  ls
+ 1129  cd 03-Ansible-Config/
+ 1130  ls
+ 1131  cd ..
+ 1132  ls
+ 1133  mkdir 04-ScaleOut
+ 1134  ls
+ 1135  cd 04-ScaleOut/
+ 1136  ls
+ 1137  mkdir -p {Production,Devlopment}/{group_vars,host_vars} 
+ 1138  ls
+ 1139  tree . 
+ 1140  ls
+ 1141  apt-get install tree -y 
+ 1142  tree . 
+ 1143  cp -rf ../03-Ansible-Config/ansible.cfg Devlopment/
+ 1144  cp -rf ../03-Ansible-Config/ansible.cfg Production/
+ 1145  cp -rf ../03-Ansible-Config/hosts Production/
+ 1146  cp -rf ../03-Ansible-Config/hosts Devlopment/
+ 1147  tree . 
+ 1148  vim Devlopment/hosts 
+ 1149  ls
+ 1150  tree . 
+ 1151  cd Production/
+ 1152  ls
+ 1153  cat hosts 
+ 1154  ls
+ 1155  ansible all -m ping 
+ 1156  ls
+ 1157  vim group_vars/all
+ 1158  ls
+ 1159  ansible all -m user -a "name=amit password=1235" 
+ 1160  ansible all -m user -a "name=amit password=1235" -s 
+ 1161  ansible all -m user -a "name={{username}} password=1235" -s 
+ 1162  ls
+ 1163  vim ansible.cfg 
+ 1164  ls
+ 1165  ssh vagrant@172.42.42.100
+ 1166  ansible all -m user -a "name={{username}} password=1235" -s 
+ 1167  ls
+ 1168  vim hosts 
+ 1169  ansible all -m user -a "name={{username}} password=1235" -s 
+ 1170  ls
+ 1171  cat host
+ 1172  cat hosts 
+ 1173  ls
+ 1174  cd  group_vars/
+ 1175  ls
+ 1176  cp -rf all web  
+ 1177  cp -rf all db 
+ 1178  ls
+ 1179  vim db 
+ 1180  vim web 
+ 1181  ls
+ 1182  cd ..
+ 1183  ls
+ 1184  ansible all -m user -a "name={{username}} password=1235" -s 
+ 1185  cd ..
+ 1186  tree . 
+ 1187  ls
+ 1188  cd 
+ 1189  ls
+ 1190  cd - 
+ 1191  ls
+ 1192  cd Production/
+ 1193  ls
+ 1194  cp -rf group_vars/web host_vars/172.42.42.101
+ 1195  ls
+ 1196  vim host_vars/172.42.42.101 
+ 1197  ls
+ 1198  ansible all -m user -a "name={{username}} password=1235" -s 
+ 1199  cd ..
+ 1200  ls
+ 1201  l
+ 1202  tree . 
+ 1203  ls
+ 1204  vim Production/
+ 1205  ls
+ 1206  cd Production/
+ 1207  ls
+ 1208  cat hosts 
+ 1209  ls
+ 1210  vim hosts 
+ 1211  ls
+ 1212  vim group_vars/dc 
+ 1213  ls
+ 1214  ansible all -m ping 
+ 1215  ls
+ 1216  vim hosts 
+ 1217  ls
+ 1218  ansible dc -m ping 
+ 1219  ls
+ 1220  cat group_vars/all 
+ 1221  vim group_vars/dc 
+ 1222  ansible dc -m ping 
+ 1223  ansible all -m ping 
+ 1224  ls
+ 1225  tree . 
+ 1226  ansible all -m user -a "name={{username}} password=1235" -s 
+ 1227  ls
+ 1228  cat group_vars/all 
+ 1229  cat group_vars/db 
+ 1230  cat group_vars/web 
+ 1231  cat host_vars/172.42.42.101 
+ 1232  ls
+ 1233  vim /etc/ansible/ansible.cfg 
+ 1234  ls
+ 1235  vim ansible.cfg 
+ 1236  ansible all -m user -a "name={{username}} password=1235" 
+ 1237  ls
+ 1238  cd ..
+ 1239  ls
+ 1240  cd .
+ 1241  cd ..
+ 1242  ls
+ 1243  cd ..
+ 1244  ls
+ 1245  cd 03-Ansible/
+ 1246  ls
+ 1247  history > Day4_History 
+ 1248  cd ..
+ 1249  ls
+ 1250  git add . ; git commit -m "Scale-Out"; git push 
+ 1251  ls
+ 1252  cd 03-Ansible/
+ 1253  ls
+ 1254  04-ScaleOut/
+ 1255  ls
+ 1256  cd 04-ScaleOut/
+ 1257  ls
+ 1258  cd Production/
+ 1259  ls
+ 1260  cat group_vars/dc 
+ 1261  history 
+ 1262  useraddls
+ 1263  ls
+ 1264  vim ansible.cfg 
+ 1265  ls
+ 1266  cd ..
+ 1267  ls
+ 1268  cd ..
+ 1269  ls
+ 1270  mkdir 05-Playbook
+ 1271  ls
+ 1272  cd 05-Playbook/
+ 1273  ls
+ 1274  cp -rf ../04-ScaleOut/Production/ansible.cfg . 
+ 1275  cp -rf ../04-ScaleOut/Production/hosts . 
+ 1276  ls
+ 1277  vim hosts 
+ 1278  ls
+ 1279  vim playbook.yaml
+ 1280  ls
+ 1281  ansible-playbook playbook.yaml 
+ 1282  ping 172.42.42.101
+ 1283  ping 172.42.42.101ls
+ 1284  ls
+ 1285  ping 172.42.42.101
+ 1286  ls
+ 1287  vim playbook.yaml 
+ 1288  ls
+ 1289  cat hosts 
+ 1290  ls
+ 1291  ansible-playbook playbook.yaml 
+ 1292  cat hosts 
+ 1293  ls
+ 1294  cp -rf ../04-ScaleOut/Production/group_vars . 
+ 1295  ls
+ 1296  cat group_vars/dc 
+ 1297  ansible-playbook playbook.yaml 
+ 1298  vim playbook.yaml 
+ 1299  ansible-playbook playbook.yaml 
+ 1300  ansible-doc  apt
+ 1301  ls
+ 1302  vim playbook.yaml 
+ 1303  ansible-playbook playbook.yaml 
+ 1304  ls
+ 1305  cd ..
+ 1306  ls
+ 1307  cd ..
+ 1308  ls
+ 1309  git add . ; git commit -m "05-Playbook"; git push 
+ 1310  ls
+ 1311  cd 03-Ansible/
+ 1312  ls
+ 1313  cp -rf 05-Playbook 06-Deployment
+ 1314  ls
+ 1315  cd 06-Deployment/
+ 1316  ls
+ 1317  vim playbook.yaml 
+ 1318  ls
+ 1319  mkdir files
+ 1320  vim files/index.html
+ 1321  ls
+ 1322  ansible-playbook playbook.yaml 
+ 1323  ls
+ 1324  cat playbook.yaml 
+ 1325  vim playbook.yaml 
+ 1326  ls
+ 1327  vim playbook.yaml 
+ 1328  ls
+ 1329  mkdir templates
+ 1330  ls
+ 1331  vim templates/info.j2
+ 1332  ansible-playbook playbook.yaml 
+ 1333  ls
+ 1334  rm 1
+ 1335  ls
+ 1336  vim templates/info.j2 
+ 1337  ls
+ 1338  ansible-playbook playbook.yaml 
+ 1339  vim playbook.yaml 
+ 1340  ansible-playbook playbook.yaml 
+ 1341  vim playbook.yaml 
+ 1342  ansible-playbook playbook.yaml 
+ 1343  ls
+ 1344  vim playbook.yaml 
+ 1345  ls
+ 1346  vim templates/info.j2 
+ 1347  ansible-playbook playbook.yaml 
+ 1348  ls
+ 1349  vim playbook.yaml 
+ 1350  ansible-playbook playbook.yaml 
+ 1351  vim templates/info.j2 
+ 1352  vim playbook.yaml 
+ 1353  ansible-playbook playbook.yaml 
+ 1354  ls
+ 1355  vim playbook.yaml 
+ 1356  ansible-playbook playbook.yaml 
+ 1357  ls
+ 1358  cd ..
+ 1359  ls
+ 1360  history > Day4_History 

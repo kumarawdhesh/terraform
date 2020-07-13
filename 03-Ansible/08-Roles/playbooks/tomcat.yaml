@@ -1,0 +1,5 @@
+---
+- hosts: web
+  name: My Tomcat Installation
+  roles:
+   - role: "../roles/tomcat"

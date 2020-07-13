@@ -1,0 +1,49 @@
+---
+# Update1: Deploy Index Web Page
+# Update2: Deploy Template Web Page
+# Update3: Local Variable 
+# Update4: Smart Playbook with Condition
+# Update5: Download Background Image. 
+
+- hosts: web:db
+  name: My Web Server Installation
+  vars:
+    doc_root: "/var/www/html"
+    admin: "Test-Admin"
+
+
+  tasks: 
+  - name: Install Apache Packages
+    apt: name=apache2 state=present 
+    when: ansible_os_family == "Debian"
+
+  - name: Start Apache Service 
+    service: name=apache2 state=started enabled=True
+    when: ansible_os_family == "Debian"
+
+  - name: Install HTTPD Packages
+    yum: name=httpd state=present 
+    when: ansible_os_family == "RedHat"
+
+  - name: Start HTTPD Service 
+    service: name=httpd state=started enabled=True
+    when: ansible_os_family == "RedHat"
+
+
+  - name: Deploy Custom Index Web Page 
+    copy: src=files/index.html dest={{doc_root}}/index.html
+
+  - name: Download Background Image.
+    get_url: url="https://image.shutterstock.com/image-vector/old-video-game-retro-style-600w-1025044384.jpg" dest={{doc_root}}/background.jpg mode=0755
+  
+  - name: Deploy Custom Info Web Page 
+    template: src=templates/info.j2 dest={{doc_root}}/info.html
+
+  
+
+- hosts: db
+  name:  Repo Server.
+  tasks: 
+  - name: Install Git Packages
+    apt: name=git state=present 
+

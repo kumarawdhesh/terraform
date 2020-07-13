@@ -1,0 +1,284 @@
+  430  docker kill $(docker ps -aq)
+  431  docker rm $(docker ps -aq)
+  432  docker images 
+  433  exit
+  434  docker ps 
+  435  docker images
+  436  docker ps -a 
+  437  docker images
+  438  docker run -it centos-8-httpd:v1
+  439  docker run -itd centos-8-httpd:v1
+  440  docker ps 
+  441  docker run -itd centos-8-httpd:v2
+  442  docker ps 
+  443  curl 172.17.0.2
+  444  curl 172.17.0.3
+  445  curl 172.17.0.4
+  446  docker ps 
+  447  docker attach ae9a6b34df06
+  448  curl 172.17.0.4
+  449  curl 172.17.0.4/info.html
+  450  docker commit -p -m "New Info Page" ae9a6b34df06 centos-8-httpd:v3
+  451  docker images 
+  452  docker run -itd centos-8-httpd:v3
+  453  curl 172.17.0.5
+  454  curl 172.17.0.5/info.html
+  455  ls
+  456  docker images 
+  457  docker run -it ubuntu
+  458  ls
+  459  docker run -it ubuntu:16.04 
+  460  docker ps 
+  461  docker inspect 89c2db3aa5e9
+  462  curl 172.17.0.6
+  463  ls
+  464  cd devops-cgi-11May2020/
+  465  ls
+  466  git branch 
+  467  cd 02-Docker/
+  468  ls
+  469  mkdir Dockerfiles
+  470  ls
+  471  cd Dockerfiles/
+  472  ls
+  473  mkdir apache
+  474  ls
+  475  cd apache/
+  476  ls
+  477  vim Dockerfile
+  478  ls
+  479  cat Dockerfile 
+  480  docker build -t ubuntu-16-apache:v1 . 
+  481  docker images 
+  482  docker run -d --name ubuntu-apache-test-1 ubuntu-16-apache:v1
+  483  docker inspect $(docker ps -q) 
+  484  docker inspect $(docker ps -ql) 
+  485  curl 172.17.0.7
+  486  curl 172.17.0.6
+  487  curl 172.17.0.5
+  488  ls
+  489  docker ps 
+  490  docker images 
+  491  docker history fc4c88f53bdf
+  492  docker inspect fc4c88f53bdf
+  493  ls
+  494  docker run -d --name ubuntu-apache-test-2 ubuntu-16-apache:v1
+  495  curl 172.17.0.8
+  496  ls
+  497  cp -rf Dockerfile Dockerfile-Org
+  498  ls
+  499  vim Dockerfile
+  500  ls
+  501  curl 172.17.0.5/info.html
+  502  curl 172.17.0.5/info.html > amit.html
+  503  ls
+  504  cat amit.html 
+  505  vim amit.html 
+  506  ls
+  507  docker build -t ubuntu-16-apache:v2 -f Dockerfile . 
+  508  docker images 
+  509  docker run -d --name ubuntu-apache-test-3 ubuntu-16-apache:v2
+  510  docker inspect ubuntu-apache-test-3
+  511  curl 172.17.0.9
+  512  curl 172.17.0.9/info.html
+  513  docker run -d --name ubuntu-apache-test-4 ubuntu-16-apache:v2
+  514  curl 172.17.0.10/info.html
+  515  docker images 
+  516  ls
+  517  cd ..
+  518  ls
+  519  cd ..
+  520  ls
+  521  history 
+  522  ls
+  523  history > Day3_History
+    1  ls
+    2  ip addr 
+    3  curl 172.17.0.9
+    4  ls
+    5  netstat -tulnp 
+    6  ls
+    7  docker images 
+    8  docker ps 
+    9  docker kill $(docker ps -aq)
+   10  docker rm  $(docker ps -aq)
+   11  docker ps -a 
+   12  docker images 
+   13  docker run -d --name test-cont-1 ubuntu-16-apache:v2
+   14  curl 172.17.0.2
+   15  docker run -d --name test-cont-2 -p 8080:80 ubuntu-16-apache:v2
+   16  docker ps 
+   17  netstat -tulnp 
+   18  docker images 
+   19  docker run -itd --name test-cont-3 -p 8080:80 centos-8-httpd:v3
+   20  docker run -itd --name test-cont-4 -p 8081:80 centos-8-httpd:v3
+   21  docker ps 
+   22  history 
+   23  ls
+   24  cd 02-Docker/
+   25  ls
+   26  cd Dockerfiles/
+   27  ls
+   28  mkdir python-webapp
+   29  ls
+   30  cd python-webapp/
+   31  ls
+   32  cp -rf ../../../../old/test/05-WebPort/* . 
+   33  ls
+   34  vim app.py 
+   35  ls
+   36  mkdir mywebapp
+   37  ls
+   38  mv app.py req.txt mywebapp/
+   39  ls
+   40  vim Dockerfile
+   41  docker build -t mywebapp:v1 . 
+   42  ls
+   43  vim Dockerfile 
+   44  docker build -t mywebapp:v1 . 
+   45  ls
+   46  docker images 
+   47  docker run -d -P mywebapp:v1
+   48  docker ps 
+   49  vim Dockerfile 
+   50  docker run -d -P mywebapp:v1
+   51  docker build -t mywebapp:v1 . 
+   52  docker run -d -P mywebapp:v1
+   53  docker ps 
+   54  docker images 
+   55  docker inspect mywebapp
+   56  docker inspect mywebapp:v1
+   57  ls
+   58  docker run -d -p 8085:80 mywebapp:v1
+   59  docker ps 
+   60  ls
+   61  cp -rf mywebapp/* . 
+   62  ls
+   63  rm -rf mywebapp/
+   64  ls
+   65  vim Dockerfile 
+   66  docker build -t mywebapp:v2 . 
+   67  vim app.py 
+   68  docker build -t mywebapp:v2 . 
+   69  docker images 
+   70  docker run -d -p 8085:80 mywebapp:v2
+   71  docker ps 
+   72  ls
+   73  mkdir code
+   74  ls
+   75  cp rf app.py req.txt code/
+   76  mv  app.py req.txt code/
+   77  ls
+   78  vim Dockerfile 
+   79  docker build -t mywebapp:v3 . 
+   80  docker run -d -p 8086:80 mywebapp:v3
+   81  docker ps 
+   82  docker run -d -P mywebapp:v3
+   83  docker ps 
+   84  ls
+   85  cd ..
+   86  ls
+   87  cd ..
+   88  ls
+   89  docker kill $(docker ps -aq)
+   90  ls
+   91  docker images 
+   92  docker images | grep -i mywebapp
+   93  docker images | grep -i mywebapp | awk -F" " '{print $1}'
+   94  docker images | grep -i mywebapp | awk -F" " '{print $3}'
+   95  docker rmi $(docker images | grep -i mywebapp | awk -F" " '{print $3}')
+   96  docker rmi $(docker images | grep -i mywebapp | awk -F" " '{print $3}') --force 
+   97  ls
+   98  cd Dockerfiles/
+   99  ls
+  100  cd apache/
+  101  ls
+  102  cd ..
+  103  ls
+  104  cd python-webapp/
+  105  ls
+  106  vim Dockerfile 
+  107  vim code/app.py 
+  108  ls
+  109  docker build -t mywebapp:v1 . 
+  110  ls
+  111  cd ..
+  112  ls
+  113  cd apache/
+  114  ls
+  115  docker images 
+  116  netstat -tulnp 
+  117  docker inspect a47070435fdd
+  118  docker images 
+  119  docker run -d -p 8086:80 mywebapp:v1
+  120  docker ps 
+  121  curl localhost:8086 
+  122  ls
+  123  vim Dockerfile
+  124  ls
+  125  cd ../
+  126  ls
+  127  cd python-webapp/
+  128  ls
+  129  cd code/
+  130  ls
+  131  cat app.py 
+  132  ls
+  133  cd ..
+  134  ls
+  135  vim Dockerfile 
+  136  docker build -t mywebapp:v2 . 
+  137  docker images 
+  138  docker inspect mywebapp:v2
+  139  ls
+  140  docker run -d -p 8087:5000 mywebapp:v2
+  141  curl localhost:8087
+  142  vim Dockerfile 
+  143  docker build -t mywebapp:v3 . 
+  144  docker run -d -p 8088:5001 mywebapp:v2
+  145  docker run -d -p 8089:5001 mywebapp:v3
+  146  docker ps 
+  147  curl localhost:8086
+  148  curl localhost:8087
+  149  curl localhost:8088
+  150  curl localhost:8089
+  151  docker run -d -P mywebapp:v3
+  152  docker ps 
+  153  ls
+  154  docker images 
+  155  docker run -d -P ubuntu-16-apache:v2
+  156  docker ps 
+  157  cd ..
+  158  ls
+  159  cd apache/
+  160  ls
+  161  vim Dockerfile
+  162  docker build -t ubuntu-16-apache:v3 -f Dockerfile
+  163  docker build -t ubuntu-16-apache:v3 -f Dockerfile .
+  164  docker run -d -P ubuntu-16-apache:v3
+  165  docker ps 
+  166  vim Dockerfile
+  167  docker build -t ubuntu-16-apache:v4 -f Dockerfile
+  168  docker build -t ubuntu-16-apache:v4 -f Dockerfile .
+  169  docker run -d -P ubuntu-16-apache:v4
+  170  docker ps 
+  171  ls
+  172  cd ..
+  173  ls
+  174  cd python-webapp/
+  175  ls
+  176  vim Dockerfile 
+  177  ls
+  178  cd code/
+  179  ls
+  180  cat req.txt 
+  181  vim app.py 
+  182  ls
+  183  cd 
+  184  ls
+  185  docker ps 
+  186  ls
+  187  cd devops-cgi-11May2020/
+  188  ls
+  189  history 
+  190  history >> 02-Docker/Day3_History 

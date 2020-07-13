@@ -1,0 +1,19 @@
+    1  apt-get update ; apt-get install default-jdk -y 
+    2  java -version 
+    3  ls
+    4  wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+    5  ls
+    6  du -sh jenkins.war 
+    7  java -jar jenkins.war
+    8  ls
+    9  java -jar jenkins.war & 
+   10  git 
+   11  git clone https://github.com/amitvashisttech/devops-cgi-11May2020.git
+   12  ls
+   13  cd devops-cgi-11May2020/
+   14  ls
+   15  mkdir 01-Jenkins 
+   16  ls
+   17  cd 01-Jenkins/
+   18  ls
+   19  history > Day1_History

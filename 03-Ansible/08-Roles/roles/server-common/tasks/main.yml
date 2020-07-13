@@ -1,0 +1,6 @@
+---
+# tasks file for server-common
+- include: git.yaml
+- include: common-user.yaml
+- include: firewall.yaml
+

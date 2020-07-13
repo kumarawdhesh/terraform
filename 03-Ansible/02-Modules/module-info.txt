@@ -1,0 +1,4 @@
+  974  ansible-doc -l
+  975  ansible-doc ping
+  976  date
+  977  ansible-doc command

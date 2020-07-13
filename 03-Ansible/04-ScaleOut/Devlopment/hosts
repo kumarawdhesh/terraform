@@ -1,0 +1,12 @@
+
+[web]
+172.42.42.1[05:10]
+
+
+[dc:children]
+web
+
+[dc:vars]
+ansible_ssh_user=vagrant
+ansible_ssh_pass=vagrant
+

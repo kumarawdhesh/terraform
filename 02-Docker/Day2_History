@@ -1,0 +1,102 @@
+   22  rm -rf 01-Jenkins/petclinic-code/Dockerfile 
+   23  rm -rf 01-Jenkins/petclinic-code/docker-compose.yaml 
+  227  docker ps 
+  228  docker ps -a 
+  281  docker version 
+  283  docker images 
+  284  docker images ps -a 
+  285  docker run busybox echo "Welcome to Docker"
+  286  docker images 
+  287  docker ps 
+  288  docker ps -a
+  289  docker ps
+  290  docker run busybox echo "Hello World"
+  292  docker ps 
+  293  docker ps -a 
+  298  mkdir 02-Docker
+  300  cd 02-Docker/
+  302  history | grep -i docker
+  303  history | grep -i docker > Day2_History
+  309  git add . ; git commit -m "02-Docker"; git push 
+  311  cat 02-Docker/Day2_History 
+  314  docker ps 
+  315  docker ps -a 
+  316  docker images 
+  317* docker pull ub
+  318  docker images 
+  319  docker run -it ubuntu
+  320  docker ps 
+  321  docker run -it centos 
+  322  docker ps 
+  323  docker run -it centos 
+  324  docker ps 
+  325  docker ps -a
+  326  docker run -it centos 
+  327  docker ps 
+  328  docker run -it --name mytest-cont-1 centos 
+  329  docker ps 
+  330  docker ps mytest-cont-1
+  331  docker inspect mytest-cont-1
+  332  docker ps 
+  333  docker stop 55b744092e7d
+  334  docker stop mytest-cont-1
+  335  docker ps 
+  336  docker ps -a 
+  337  docker start mytest-cont-1
+  338  docker ps 
+  339  docker inspect mytest-cont-1
+  340  docker run -it --name mytest-cont-2 centos 
+  341  docker run -it --name mytest-cont-3 centos 
+  342  docker ps 
+  343  docker inspect mytest-cont-1
+  344  docker inspect mytest-cont-2
+  345  docker inspect mytest-cont-3
+  346  docker stop  mytest-cont-2
+  347  docker inspect mytest-cont-2
+  348  docker run -it --name mytest-cont-4 centos 
+  349  docker inspect mytest-cont-4
+  350  docker start mytest-cont-2
+  351  docker inspect mytest-cont-4
+  352  docker inspect mytest-cont-2
+  354  docker ps 
+  355  docker rm mytest-cont-2
+  356  docker kill mytest-cont-2
+  357  docker ps -a 
+  358  docker rm mytest-cont-2
+  359  docker ps -a 
+  360  docker start mytest-cont-2
+  362  docker ps 
+  363  docker attach mytest-cont-1
+  370  docker attach mytest-cont-1
+  374  docker attach mytest-cont-1
+  376  docker ps 
+  377  docker commit -p -m "MyTestHTTPD" mytest-cont-1 centos-8-httpd:v1
+  378  docker images 
+  379  docker run -it --name httpd-1 centos-8-httpd:v1
+  380  docker ps 
+  381  docker attach mytest-cont-4
+  382  docker ps 
+  383  docker run -it --name httpd-2 centos-8-httpd:v1
+  386  docker inspect httpd-1
+  392  docker attach httpd-2 
+  393  docker commit -p -m "MyTestHTTPD" httpd-2 centos-8-httpd:v2
+  394  docker ps 
+  395  docker ps -a
+  396  docker ps -aq
+  397  docker kill $(docker ps -aq)
+  398  docker rm $(docker ps -aq)
+  399  docker ps -a 
+  400  docker images 
+  401  docker run -it --name httpd-1 centos-8-httpd:v1
+  402  docker run -it --name httpd-2 centos-8-httpd:v2
+  403  docker inspect httpd-1
+  405  docker inspect httpd-2
+  407  docker run -it --name httpd-3 centos-8-httpd:v2
+  409  docker run -itd --name httpd-4 centos-8-httpd:v2
+  410  docker run -itd --name httpd-5 centos-8-httpd:v2
+  411  docker ps 
+  412  docker inspect httpd-5
+  418  docker ps 
+  422  cd 02-Docker/
+  424  history | grep -i docker
+  425  history | grep -i docker > Day2_History 

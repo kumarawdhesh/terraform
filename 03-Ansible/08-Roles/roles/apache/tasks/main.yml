@@ -1,0 +1,27 @@
+---
+# tasks file for apache
+- name: Install Apache Packages
+  apt: name=apache2 state=present 
+  when: ansible_os_family == "Debian"
+
+- name: Start Apache Service 
+  service: name=apache2 state=started enabled=True
+  when: ansible_os_family == "Debian"
+
+- name: Install HTTPD Packages
+  yum: name=httpd state=present 
+  when: ansible_os_family == "RedHat"
+
+- name: Start HTTPD Service 
+  service: name=httpd state=started enabled=True
+  when: ansible_os_family == "RedHat"
+
+
+- name: Deploy Custom Index Web Page 
+  copy: src=files/index.html dest={{doc_root}}/index.html
+
+- name: Download Background Image.
+  get_url: url="https://image.shutterstock.com/image-vector/old-video-game-retro-style-600w-1025044384.jpg" dest={{doc_root}}/background.jpg mode=0755
+  
+- name: Deploy Custom Info Web Page 
+  template: src=templates/info.j2 dest={{doc_root}}/info.html

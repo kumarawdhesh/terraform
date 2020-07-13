@@ -1,0 +1,4 @@
+---
+# handlers file for tomcat
+- name: Restart Tomcat
+  shell: "nohup sh  {{doc_tomcat}}/bin/catalina.sh  start"
